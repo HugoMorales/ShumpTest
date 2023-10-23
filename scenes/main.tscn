@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh4uc71udeejn"]
+
+[ext_resource type="Script" path="res://scripts/main_character/main_character.gd" id="1_1sgqi"]
+[ext_resource type="Texture2D" uid="uid://b54o62qp2151o" path="res://assets/kenney_pixel-shmup/Ships/ship_0000.png" id="1_ri2rh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilc5f"]
+radius = 8.24621
+
+[node name="main" type="Node2D"]
+position = Vector2(1, -3)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(204, 537)
+motion_mode = 1
+script = ExtResource("1_1sgqi")
+
+[node name="CharacterSprite" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ri2rh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_ilc5f")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
+position = Vector2(-2, -185.75)
+scale = Vector2(11.1, 34.875)

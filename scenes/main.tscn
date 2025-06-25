@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh4uc71udeejn"]
+[gd_scene load_steps=6 format=3 uid="uid://bh4uc71udeejn"]
 
-[ext_resource type="Script" path="res://scripts/main_character/main_character.gd" id="1_1sgqi"]
+[ext_resource type="Script" uid="uid://bhfmpvfprils2" path="res://scripts/main_character/main_character.gd" id="1_1sgqi"]
 [ext_resource type="Texture2D" uid="uid://b54o62qp2151o" path="res://assets/kenney_pixel-shmup/Ships/ship_0000.png" id="1_ri2rh"]
+[ext_resource type="Texture2D" uid="uid://cw7wl2c6uwx75" path="res://icon.svg" id="3_sugp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilc5f"]
 radius = 8.24621
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(20, 369)
 
 [node name="main" type="Node2D"]
 position = Vector2(1, -3)
@@ -14,14 +18,29 @@ position = Vector2(204, 537)
 motion_mode = 1
 script = ExtResource("1_1sgqi")
 
-[node name="CharacterSprite" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_ri2rh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_ilc5f")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
-position = Vector2(-2, -185.75)
-scale = Vector2(11.1, 34.875)
+[node name="CharacterSprite" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ri2rh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 346)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 174.5)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(283, 521)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D"]
+position = Vector2(-1, 1.49998)
+scale = Vector2(0.15625, 2.75781)
+texture = ExtResource("3_sugp2")

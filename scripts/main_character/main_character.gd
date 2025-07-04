@@ -16,4 +16,5 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
-	print(move_and_slide())
+	if(move_and_slide()):
+		print("true")

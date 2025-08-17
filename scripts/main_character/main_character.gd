@@ -1,3 +1,4 @@
+class_name MainCharacter
 extends CharacterBody2D
 
 const base_speed = 250	##base speed of the character
